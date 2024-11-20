@@ -1,25 +1,23 @@
-class Find_the_Element_Sorted_Array {
+class Find_Floor_Of_Element {
     public static int findElement(int arr[], int target) {
         int start = 0;
         int end = arr.length - 1;
-        while (start <= end) {
-            int mid = (start + end) / 2;
+        while (start < end) {
+            int mid = start + (end - start) / 2;
             if (target < arr[mid]) {
                 end = mid - 1;
             } else if (target > arr[mid]) {
                 start = mid + 1;
             } else {
-                return mid;
+                return arr[mid];
             }
         }
-
-        return -1;
+        return arr[end];
     }
 
     public static void main(String[] args) {
-        int nums[] = { 1, 2, 3, 4, 5, 6, 7 };
+        int nums[] = { 1, 2, 3, 5, 8, 10 };
         int target = 5;
-        System.out.println("Element found at index : "+findElement(nums, target));
+        System.out.println("Element Floorof target is: " + findElement(nums, target));
     }
-
 }
